@@ -1,0 +1,121 @@
+<style>
+    body {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        background-color: #F8F8F8; 
+        color: #6A4C93; 
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h2, h3, h4, h5 {
+        color: #6A4C93; 
+    }
+
+    h1 {
+        text-align: center;
+        padding-bottom: 2%;
+    }
+
+    table {
+        margin: 20px auto;
+        text-align: center;
+        width: 80%;
+        background-color: #F8F8F8; 
+        border-collapse: collapse; 
+    }
+
+    th, td {
+        border: 2px solid #B5A4C7; 
+        padding: 10px;
+        font-size: larger;
+    }
+
+    #header, .head {
+        border: 4px solid #B5A4C7;
+        background-color: #DCCAE8; 
+    }
+
+    #location, .overview-container, .location-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px; 
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid #B5A4C7;
+        background-color: #EDE7F6;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+    }
+
+    .location-detail, .desc {
+        border: 1px solid #B5A4C7;
+        border-radius: 5px;
+        padding: 10px;
+        color: #DB7093; 
+    }
+
+    .admin {
+        font-size: smaller;
+        padding-left: 1%;
+        color: #B5A4C7; 
+    }
+
+    #Overview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; 
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid #B5A4C7;
+        background-color: #EDE7F6;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: fit-content;
+    }
+
+    h4 {
+        margin: 0; 
+        text-align: center;
+    }
+
+</style>
+<body>
+    <h1>Admin Home Page</h1>
+
+    <table>
+        <tr id="header">
+            <th>Locations</th>
+            <th>Stations</th>
+        </tr>
+        {{#each site}}
+        <tr>
+            <th>{{this.location}}</th>
+            <td>{{this.station}}</td> 
+        </tr>
+        {{/each}}
+    </table>
+    <br>
+
+    <h3>Feeding Site Overview:</h3>
+        <div id="Overview">
+            <h4> Locations: {{location}}</h4>
+            <h4> Stations: {{station}}</h4>
+        </div>
+    <br>
+    <h3>Location Records:</h3>
+    <div id="location">
+        {{#each siteDetails}}
+        <div >
+            <h4>{{this.locations}}</h4>
+            <h5>Station:<span class="admin">{{this.stations}}</span></h5>
+            <h5>Water:<span class="admin">{{this.water}}</span></h5>
+            <h5>Food:<span class="admin">{{this.food}}</span></h5>
+            <h5>Cats:<span class="admin">{{this.cats}}</span></h5>
+        </div>
+        {{/each}}
+    </div>
+        
+</body>

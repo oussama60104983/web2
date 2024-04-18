@@ -1,0 +1,63 @@
+<style>
+    body {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        background-color: #F8F8F8; 
+        color: #6A4C93; 
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #6A4C93;
+    }
+
+    table {
+        margin: 20px auto;
+        text-align: center;
+        width: 80%;
+        background-color: #F8F8F8; 
+    }
+
+
+    th, td {
+        border: 2px solid #B5A4C7; 
+        padding: 10px;
+        font-size: normal;
+    }
+
+    th.head {
+        border: 2px solid #B5A4C7; 
+        background-color: #DCCAE8; 
+        color: #F8F8F8; 
+    }
+
+    td.desc {
+        color: #DB7093; 
+    }
+
+</style>
+
+<body>
+    <h1>Member Reports</h1>
+    <table>
+        <tr>
+            <th class="head">Location</th>
+            <th class="head">Station</th>
+            <th class="head">Issue Type</th>
+            <th class="head">Description</th>
+            <th class="head">Report Date & Time</th>
+            <th class="head">Member</th>
+        </tr>
+        {{#each items}}
+        <tr>
+            <th>{{this.location}}</th>
+            <td>{{this.station}}</td>
+            <td>{{this.type}}</td>
+            <td class="desc" >{{this.description}}</td>
+            <td>{{this.uploadDate}}</td>
+            <td>{{this.member}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</body>

@@ -1,0 +1,25 @@
+[{
+  "username": "amira",
+  "email": "amira@web.com",
+  "password": "ami123",
+  "accType": "member"
+},
+{
+  "username": "oussama",
+  "email": "oussama@gmail.com",
+  "password": "sama123",
+  "accType": "member"
+},
+{
+ 
+  "username": "admin",
+  "email": "admin@CUi.com",
+  "password": "admin",
+  "accType": "admin"
+},
+{
+  "username": "amirAhmed",
+  "email": "amirAhmed@gmail.com",
+  "password": "irah123",
+  "accType": "member"
+}]

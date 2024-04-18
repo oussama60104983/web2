@@ -1,0 +1,128 @@
+<head>
+    <head>
+        <style>
+            body {
+                font-family: 'Georgia', serif;
+                font-style: italic;
+                background-color: #F8F8F8; 
+                color: #6A4C93; 
+            }
+
+            h1, h2 {
+                text-align: center;
+                color: #6A4C93;
+            }
+
+            #error {
+                color: red;
+                text-align: center;
+            }
+
+            form {
+                background-color: #EDE7F6; 
+                color: #6A4C93;
+                display: grid;
+                grid-gap: 20px;
+                grid-template-columns: 1fr 1fr; /* Two column layout */
+                margin: auto;
+                border: 2px solid #B5A4C7; 
+                width: 70%;
+                padding: 20px;
+            }
+
+            label {
+                margin: auto;
+                padding: 10px;
+            }
+
+            input[type="text"], input[type="file"], textarea, input[type="submit"], select {
+                border: 1px solid #B5A4C7; 
+                border-radius: 5px; 
+                padding: 8px; 
+                width: 100%; /* Ensure inputs take up full width */
+            }
+
+            .form-row { /* Added for better control of form layout */
+                display: contents; /* Use this to keep grid behavior */
+            }
+
+            #submit {
+                grid-column: span 2; /* Make submit button span across both columns */
+                cursor: pointer; 
+                background-color: #6A4C93; 
+                color: white; 
+                justify-self: center; 
+            }
+
+            #header, tr, th, td {
+                border: 2px solid #B5A4C7; 
+            }
+
+            table {
+                margin: 20px auto;
+                text-align: center;
+                width: 80%;
+                background-color: #F8F8F8; 
+            }
+
+            tr, th, td {
+                padding: 10px; 
+            }
+
+            th {
+                background-color: #DCCAE8; 
+                color: #F8F8F8; 
+            }
+
+            /* Fix for the file upload alignment */
+            #upload-row { 
+                grid-column: span 2; 
+            }
+            #upload-label, #upload {
+                grid-column: span 1; 
+            }
+
+        </style>
+    </head>
+<body>
+    <h1>Member Reviews & Posts</h1>
+
+    {{#if message}}
+        <div id="error">{{message}}</div>
+    {{/if}}
+    <table>
+        <tr id="header">
+            <th>Locations</th>
+            <th>Stations</th>
+        </tr>
+        {{#each site}}
+        <tr>
+            <th>{{this.location}}</th>
+            <td>{{this.station}}</td> 
+        </tr>
+        {{/each}}
+    </table>
+    <br>
+    <br>
+    <form method="post" action="/member/{{user}}/review_post" enctype="multipart/form-data">
+        <label for="location-select">Location:</label>
+        <select name="location" id="location-select">
+          {{#each site}}
+          <option value="{{this.location}}">{{this.location}}</option>
+          {{/each}}
+        </select>
+                
+        <label for="station">Station:</label>
+        <input type="text" id="station"  name="station">
+
+        <label for="content">Review:</label>
+        <textarea id="content" name="content"></textarea><br>
+
+        <input type="file" name="submission"><br><br><br>
+        <input id="submit" type="submit" name="submit" value="Submit">
+    </form>
+    <br>
+    <br>
+    
+
+</body>

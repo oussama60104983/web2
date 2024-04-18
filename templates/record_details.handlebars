@@ -1,0 +1,125 @@
+<style>
+    body {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        background-color: #F8F8F8;
+        color: #6A4C93; 
+    }
+
+    h1 {
+        text-align: center;
+        color: #6A4C93;
+    }
+
+    #error {
+        color: red;
+        text-align: center;
+    }
+
+    form {
+        background-color: #EDE7F6;
+        color: #6A4C93;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        
+        margin: 20px auto;
+        border: 2px solid #B5A4C7; 
+        width: 70%;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    label {
+        padding: 5px;
+        justify-self: end; 
+    }
+
+    input, textarea ,select{
+        width: 95%;
+        margin: auto;
+        border: 1px solid #B5A4C7; 
+        border-radius: 5px; 
+        padding: 8px; 
+    }
+
+    #submit {
+        grid-column: span 2;
+        width: 40%;
+        justify-self: center;
+        background-color: #6A4C93; 
+        color: white;
+        border: none;
+        
+    }
+
+    #submit:hover {
+        background-color: #5D5286;
+    }
+
+    #header, table, th, td {
+        border: 2px solid #B5A4C7;
+        border-collapse: collapse;
+    }
+
+    table {
+        margin: 20px auto;
+        text-align: center;
+        width: 80%;
+        background-color: #F8F8F8; 
+    }
+
+    tr, th, td {
+        padding: 10px;
+    }
+
+    th {
+        background-color: #DCCAE8; 
+        color: #F8F8F8; 
+    }
+
+</style>
+
+<body>
+    <h1>Record Details</h1>
+    {{#if message}}
+    <p id="error">{{message}}</p>
+    {{/if}}
+    <table>
+        <tr id="header">
+            <th>Locations</th>
+            <th>Stations</th>
+        </tr>
+        {{#each site}}
+        <tr>
+            <th>{{this.location}}</th>
+            <td>{{this.station}}</td> 
+        </tr>
+        {{/each}}
+    </table>
+    <br>
+   
+    <form method="post">
+        <label for="location-select">Location:</label>
+        <select name="location" id="location-select">
+          {{#each site}}
+          <option value="{{this.location}}">{{this.location}}</option>
+          {{/each}}
+        </select>
+        
+
+        <label for="station">Station:</label>
+        <input type="text" name="station" >
+
+        <label for="water">Water(Litres):</label>
+        <input type="number" name="water" min="0" >
+
+        <label for="food">Food(Kg):</label>
+        <input type="number" name="food"  min="0" >
+
+        <label for="cats">Estimated number of cats:</label>
+        <input type="number" name="cats" min="0" ><br>
+
+        <input type="submit" id="submit" value="Record"><br>
+    </form>
+</body>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      background-color: 
+      color: #6A4C93; 
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1, h2, p {
+      text-align: center;
+      color: #967BB6; 
+    }
+  
+    h1 {
+      color: #B5A4C7; 
+    }
+  
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 1100px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border: 1px solid #DECBE4; 
+    }
+  
+    th {
+      background-color: #967BB6; 
+      color: #F8F8F8; 
+      font-size: 18px;
+    }
+  
+    td {
+      background-color: #F8F8F8; 
+      color: #6A4C93; 
+    }
+  
+    .reviews-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 1100px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      background-color: #F8F8F8;
+    }
+  
+    .reviews {
+      flex: 1 1 45%;
+      background-color: #EDE7F6; 
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #DECBE4; 
+    }
+    .reviews img {
+      
+      max-width: 100%; 
+      height: auto; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+      margin-top: 20px; 
+      border: 2px solid #DECBE4; 
+      align:center;
+    }
+  
+    .reviews h2 {
+      color: #6A4C93; 
+      margin-top: 0;
+    }
+  
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #967BB6; 
+      margin: 20px 0;
+    }
+  
+    @media (max-width: 768px) {
+      .reviews-container {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .reviews {
+        flex-basis: 90%;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>Welcome to Shelter for Stray Cats!</h1>
+  <img src="/static/assets/img/public_page.jpg" alt="Public Page Image" style="border: 2px solid #6A4C93; width: 50%; margin: 20px auto; display: block;">
+  <br>
+  <p>Embarking on a journey to positively impact the lives of stray cats throughout Qatar, we're dedicated to building a comprehensive online platform. This platform aims to shed light on the challenges faced by stray cats and enable volunteers to make a difference actively.</p>
+  <p>Our objective is to develop an accessible website that simplifies the process of setting up and managing feeding stations across Qatar. These stations are crucial for providing stray cats with necessary food and, when required, medical care.</p>
+  <p>This initiative seeks to connect compassionate individuals with stray cats in need, creating a network of support and care. By sharing up-to-date information on the gathering spots of stray cats, we aim to encourage more volunteers to participate in our cause.</p>
+  <p>Embark on this meaningful journey with us to forge a kinder world for stray cats. Together, we can achieve significant change, step by step.</p>
+  <br>
+  <hr>
+  <h2>Overview of Feeding Site Locations and Available Amenities.</h2>
+  <br>
+
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Description</th>
+      <th>Access</th>
+      <th>Facilities</th>
+    </tr>
+    {{#each locations}}
+    <tr>
+      <td class="first" style="font-weight: bold;">{{this.location}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.access}}</td>
+      <td>{{this.facilities}}</td>
+    </tr>
+    {{/each}}
+  </table>
+
+  <br>
+  <hr>
+  <h2>Reviews</h2><br>
+  <div class="reviews-container">
+    {{#each reviews}}
+    <div class="reviews">
+      <p><strong>Member:</strong> {{this.member}}</p>
+      <p><strong>Location:</strong> {{this.location}}</p>
+      <p><strong>Station:</strong> {{this.station}}</p>
+      <p><strong>Review:</strong> {{this.content}}</p>
+      {{#if this.file}}
+      <img id="post" src="static/uploads/{{this.file}}" alt={{this.file}}>
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+</body>
+</html>

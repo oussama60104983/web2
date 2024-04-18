@@ -1,0 +1,78 @@
+{{!-- <h1>This is Member Page</h1> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            background-color: #F8F8F8; 
+            color: #6A4C93; 
+            margin: 0;
+            padding: 20px;
+        }
+
+        #order {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px; 
+            justify-items: center; 
+        }
+
+        h1 {
+            text-align: center;
+            color: #6A4C93;
+            padding-bottom: 2%;
+        }
+
+        p {
+            color: #B5A4C7;
+            text-align: center;
+            font-size: larger;
+        }
+
+        input[type=button] {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            background-color: #EDE7F6; 
+            color: #6A4C93;
+            border: 1px solid #B5A4C7; 
+            border-radius: 5px; 
+            padding: 10px 20px; 
+            transition: background-color 0.3s; 
+        }
+
+        input[type=button]:hover {
+            background-color: #DCCAE8;
+        }
+
+        #error {
+            color: #F00; 
+        }
+    </style>
+</head>
+<body>
+    <h1>MEMBER HOMEPAGE</h1>
+    <img src="/static/assets/img/member_page.jpg" alt="Member Page Image" style="border: 2px solid #6A4C93; width: 50%; margin: 20px auto; display: block;">
+    <p>Dear Members,</p>
+
+        <p>We warmly welcome you to our website and extend our heartfelt gratitude for your unwavering support. Your commitment to our cause not only enriches our community but also empowers us to make a meaningful impact together. As we embark on this journey, we are thrilled to have you with us, contributing your valuable time, effort, and resources.</p>
+        
+        <p>Please explore our site to discover the various ways you can engage and make a difference. Your involvement is crucial to our mission, and we are excited to see the positive changes we will achieve together.</p>
+        
+        <p>Thank you once again for your support and for being an essential part of our community.</p>
+        <br>
+        <br>
+        <div id="order">
+            <input type="button" value="Record Data" onclick="location.href='/member/{{user}}/record_details'">
+            <input type="button" value="Review/Post" onclick="location.href='/member/{{user}}/review_post'">
+            <input type="button" value="Report an Issue" onclick="location.href='/member/{{user}}/report_issue'">
+        </div>
+        
+
+
+    
+   
+
+</body>
+</html>
